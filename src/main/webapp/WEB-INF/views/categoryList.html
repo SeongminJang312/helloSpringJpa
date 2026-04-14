@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>카테고리 목록</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #4472C4; color: white; }
+        .success { color: green; }
+        .error { color: red; }
+        footer { margin-top: 40px; padding: 10px; background-color: #f0f0f0; text-align: center; font-size: 13px; }
+    </style>
+</head>
+<body>
+<h1>카테고리 목록</h1>
+
+<p class="success" th:if="${successMessage}" th:text="${successMessage}"></p>
+<p class="error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+<a href="/categories/create">+ 새 카테고리 등록</a>
+
+<table>
+    <thead>
+    <tr><th>ID</th><th>카테고리명</th><th>작업</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="cat : ${categories}">
+        <td th:text="${cat.id}"></td>
+        <td th:text="${cat.name}"></td>
+        <td>
+            <form th:action="@{/categories/{id}/delete(id=${cat.id})}" method="post">
+                <button type="submit">삭제</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<footer>
+    <p th:text="'실습 수행 일시: ' + ${#temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 HH:mm:ss')} + ' | 학번: 2371063 | 성명: 장성민'"></p>
+</footer>
+</body>
+</html>

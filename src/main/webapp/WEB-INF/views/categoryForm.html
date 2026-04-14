@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>카테고리 등록</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .error { color: red; }
+    footer { margin-top: 40px; padding: 10px; background-color: #f0f0f0; text-align: center; font-size: 13px; }
+  </style>
+</head>
+<body>
+<h1>카테고리 등록</h1>
+
+<form th:action="@{/categories/create}" th:object="${categoryForm}" method="post">
+  <div>
+    <label>카테고리 이름</label><br>
+    <input type="text" th:field="*{name}" placeholder="카테고리 이름"/>
+    <span class="error" th:errors="*{name}"></span>
+  </div>
+  <br>
+  <button type="submit">등록</button>
+  <a href="/categories">취소</a>
+</form>
+
+<footer>
+  <p th:text="'실습 수행 일시: ' + ${#temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 HH:mm:ss')} + ' | 학번: 2371063 | 성명: 장성민'"></p>
+</footer>
+</body>
+</html>
