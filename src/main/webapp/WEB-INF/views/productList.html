@@ -119,6 +119,8 @@
             </tr>
         </tbody>
     </table>
-
+    <footer style="margin-top: 40px; padding: 10px; background-color: #f0f0f0; text-align: center; font-size: 13px;">
+        <p th:text="'실습 수행 일시: ' + ${#temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 HH:mm:ss')} + ' | 학번: 2371063 | 성명: 장성민'"></p>
+    </footer>
 </body>
 </html>
